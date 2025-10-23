@@ -1,14 +1,10 @@
-export default function ProductList() {
-    return (
-        <div>
-
-        </div>
-    );
-}
-
+import { ProductsType } from "@/types";
+import Categories from "./Categories";
+import ProductCard from "./ProductCard";
+import Link from "next/link";
 
 // TEMPORARY
-const products = [
+const products: ProductsType = [
     {
         id: 1,
         name: "Adidas CoreFit T-Shirt",
@@ -20,9 +16,9 @@ const products = [
         sizes: ["s", "m", "l", "xl", "xxl"],
         colors: ["gray", "purple", "green"],
         images: {
-        gray: "/products/1g.png",
-        purple: "/products/1p.png",
-        green: "/products/1gr.png",
+            gray: "/products/1g.png",
+            purple: "/products/1p.png",
+            green: "/products/1gr.png",
         },
     },
     {
@@ -48,9 +44,9 @@ const products = [
         sizes: ["s", "m", "l"],
         colors: ["green", "blue", "black"],
         images: {
-        green: "/products/3gr.png",
-        blue: "/products/3b.png",
-        black: "/products/3bl.png",
+            green: "/products/3gr.png",
+            blue: "/products/3b.png",
+            black: "/products/3bl.png",
         },
     },
     {
@@ -76,9 +72,9 @@ const products = [
         sizes: ["s", "m", "l"],
         colors: ["red", "orange", "black"],
         images: {
-        red: "/products/5r.png",
-        orange: "/products/5o.png",
-        black: "/products/5bl.png",
+            red: "/products/5r.png",
+            orange: "/products/5o.png",
+            black: "/products/5bl.png",
         },
     },
     {
@@ -118,3 +114,24 @@ const products = [
         images: { blue: "/products/8b.png", green: "/products/8gr.png" },
     },
 ];
+
+export default function ProductList({category}: {category: string}) {
+    return (
+        <div className="w-full">
+            <Categories />
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
+                {products.map(product => (
+                    <ProductCard key={product.id} product={product} />
+                ))}
+            </div>
+            <Link
+                href={category ? `/products/?category=${category}` : "/products"}
+                className="flex justify-end mt-4 underline text-sm text-gray-500"
+            >
+                View all products
+            </Link>
+        </div>
+    );
+}
+
+
