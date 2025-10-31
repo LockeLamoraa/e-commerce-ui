@@ -14,7 +14,7 @@ export default function Footer() {
                     />
                     <p className="hidden md:block text-md font-medium tracking-wider text-white">TRENDLAMA</p>
                 </Link>
-                <p className="text-sm text-gray-400">c 2025 Trendlama.</p>
+                <p className="text-sm text-gray-400">&copy; 2025 Trendlama.</p>
                 <p className="text-sm text-gray-400">All rights reserved.</p>
             </div>
             <div className="flex flex-col gap-4 text-sm text-gray-400 items-center md:items-start">
